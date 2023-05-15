@@ -1,0 +1,3 @@
+/home/adai/software-rasterizer/s-renderer-backend/build/CMakeFiles/rebuild_cache.dir
+/home/adai/software-rasterizer/s-renderer-backend/build/CMakeFiles/edit_cache.dir
+/home/adai/software-rasterizer/s-renderer-backend/build/CMakeFiles/Rasterizer.dir
