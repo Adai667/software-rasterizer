@@ -1,6 +1,6 @@
 *.log
 
 package-lock.json
-s-renderer-frontend/node_modules
+client/node_modules/
 
-s-renderer-backend/build
+server/build/
