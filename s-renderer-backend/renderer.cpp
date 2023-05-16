@@ -11,6 +11,7 @@
 #include "Shader.hpp"
 #include "Texture.hpp"
 #include "OBJ_Loader.h"
+#define MAX_ANGLE 100
 
 Eigen::Matrix4f get_view_matrix(Eigen::Vector3f eye_pos)
 {
@@ -323,7 +324,7 @@ Eigen::Vector3f bump_fragment_shader(const fragment_shader_payload& payload)
     return result_color * 255.f;
 }
 
-std::map<int, std::vector<uchar>> initialize_image_map(std::string obj_path, std::string obj_name, std::string texture_name)
+std::map<int, std::vector<uchar>> initialize_image_map(std::string obj_path, std::string obj_name, std::string texture_name, std::string shader)
 {
     std::vector<Triangle*> TriangleList;
 
@@ -352,8 +353,15 @@ std::map<int, std::vector<uchar>> initialize_image_map(std::string obj_path, std
 
     std::function<Eigen::Vector3f(fragment_shader_payload)> active_shader = phong_fragment_shader;
 
-    if (obj_path == "../models/spot/") {
+    if (shader == "displacement") {
         active_shader = displacement_fragment_shader;
+    }
+    
+    if (shader == "texture") {
+        active_shader = texture_fragment_shader;
+    }
+    if (shader == "bump") {
+        active_shader = bump_fragment_shader;
     }
 
     Eigen::Vector3f eye_pos = {0,0,10};
@@ -366,8 +374,8 @@ std::map<int, std::vector<uchar>> initialize_image_map(std::string obj_path, std
 
     std::map<int, std::vector<uchar>> image_map; 
 
-    for (int input_angle = 0 ; input_angle < 100; input_angle++) {
-        float angle = input_angle * 360.f / 100.f;
+    for (int input_angle = 0 ; input_angle < MAX_ANGLE; input_angle++) {
+        float angle = (float)input_angle * 360.f / 100.f;
 
         r.clear(rst::Buffers::Color | rst::Buffers::Depth);
         r.set_model(get_model_matrix(angle));
@@ -392,5 +400,5 @@ std::map<int, std::vector<uchar>> initialize_image_map(std::string obj_path, std
 
         image_map[input_angle] = byteData;
     }
-    return image_map;
+    return std::move(image_map);
 }

@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/adai/software-rasterizer/s-renderer-backend/Texture.cpp" "/home/adai/software-rasterizer/s-renderer-backend/build/CMakeFiles/Rasterizer.dir/Texture.cpp.o"
   "/home/adai/software-rasterizer/s-renderer-backend/Triangle.cpp" "/home/adai/software-rasterizer/s-renderer-backend/build/CMakeFiles/Rasterizer.dir/Triangle.cpp.o"
   "/home/adai/software-rasterizer/s-renderer-backend/main.cpp" "/home/adai/software-rasterizer/s-renderer-backend/build/CMakeFiles/Rasterizer.dir/main.cpp.o"
   "/home/adai/software-rasterizer/s-renderer-backend/rasterizer.cpp" "/home/adai/software-rasterizer/s-renderer-backend/build/CMakeFiles/Rasterizer.dir/rasterizer.cpp.o"

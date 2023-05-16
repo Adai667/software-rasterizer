@@ -123,33 +123,6 @@ Rasterizer/fast:
 	$(MAKE) -f CMakeFiles/Rasterizer.dir/build.make CMakeFiles/Rasterizer.dir/build
 .PHONY : Rasterizer/fast
 
-Texture.o: Texture.cpp.o
-
-.PHONY : Texture.o
-
-# target to build an object file
-Texture.cpp.o:
-	$(MAKE) -f CMakeFiles/Rasterizer.dir/build.make CMakeFiles/Rasterizer.dir/Texture.cpp.o
-.PHONY : Texture.cpp.o
-
-Texture.i: Texture.cpp.i
-
-.PHONY : Texture.i
-
-# target to preprocess a source file
-Texture.cpp.i:
-	$(MAKE) -f CMakeFiles/Rasterizer.dir/build.make CMakeFiles/Rasterizer.dir/Texture.cpp.i
-.PHONY : Texture.cpp.i
-
-Texture.s: Texture.cpp.s
-
-.PHONY : Texture.s
-
-# target to generate assembly for a file
-Texture.cpp.s:
-	$(MAKE) -f CMakeFiles/Rasterizer.dir/build.make CMakeFiles/Rasterizer.dir/Texture.cpp.s
-.PHONY : Texture.cpp.s
-
 Triangle.o: Triangle.cpp.o
 
 .PHONY : Triangle.o
@@ -267,9 +240,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Rasterizer"
-	@echo "... Texture.o"
-	@echo "... Texture.i"
-	@echo "... Texture.s"
 	@echo "... Triangle.o"
 	@echo "... Triangle.i"
 	@echo "... Triangle.s"

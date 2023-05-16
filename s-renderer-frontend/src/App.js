@@ -12,7 +12,7 @@ function Model({ value, onModelClick }) {
 const App = () => {
   const [imageSrc, setImageSrc] = useState('');
   const [sliderValue, setSliderValue] = useState(0);
-  const [currentObject, setCurrentObject] = useState("Bear");
+  const [currentObject, setCurrentObject] = useState("Texture");
 
 
   const handleSliderChange = async (event) => {
@@ -48,9 +48,9 @@ const App = () => {
         
       </div>
       <div class="right-section">
-        <Model value={"Bunny"} onModelClick={() => handleClick("Bunny")} />
-        <Model value={"Cow"} onModelClick={() => handleClick("Cow")} />
-        <Model value={"Rock"} onModelClick={() => handleClick("Rock")} />
+        <Model value={"Classic"} onModelClick={() => handleClick("Texture")} />
+        <Model value={"Cyberpunk Futurism"} onModelClick={() => handleClick("Bump")} />
+        <Model value={"Metallic Glamour"} onModelClick={() => handleClick("Displacement")} />
       </div>
       
     </div>

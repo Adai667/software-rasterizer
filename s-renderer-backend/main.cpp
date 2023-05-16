@@ -15,9 +15,9 @@ using namespace restbed;
 std::map<std::string, std::map<int, std::vector<uchar>>> obj_image_map; 
 
 void initialize_objs() {
-    obj_image_map["Cow"] = initialize_image_map("../models/spot/", "spot_triangulated_good.obj", "hmap.jpg");
-    // obj_image_map["Rock"] = initialize_image_map("../models/rock/", "rock.obj", "rock.png");
-    // obj_image_map["Bunny"] = initialize_image_map("../models/rock/", "bunny.obj", "rock.png");
+    obj_image_map["Displacement"] = initialize_image_map("../models/spot/", "spot_triangulated_good.obj", "hmap.jpg", "displacement");
+    obj_image_map["Texture"] = initialize_image_map("../models/spot/", "spot_triangulated_good.obj", "spot_texture.png", "texture");
+    obj_image_map["Bump"] = initialize_image_map("../models/spot/", "spot_triangulated_good.obj", "hmap.jpg", "bump");
 
     return;
 }
@@ -45,7 +45,7 @@ int main()
     std::cout << "Image Map Setted" << std::endl;
 
     auto resource = std::make_shared<Resource>();
-    resource->set_path("/image/{object: Bunny|Bear|Rock}/{angle:[0-9]{1,2}}");
+    resource->set_path("/image/{object: Displacement|Texture|Bump}/{angle:[0-9]{1,2}}");
     resource->set_method_handler("GET", get_image_handler);
 
     auto settings = std::make_shared<Settings>();

@@ -285,19 +285,27 @@ void rst::rasterizer::rasterize_triangle(const Triangle& t, const std::array<Eig
             y_min = p.y();
         }
     }
+    y_min = y_min < 0? 0 : y_min;
+    x_min = x_min < 0? 0: x_min;
+    y_max = y_max > height? height : y_max;
+    x_max = x_max > width? width : x_max;
 
 
-    for (int x = (int)x_min; x <= (int)x_max; x++) {
-        for (int y = (int)y_min; y <= (int)y_max; y++) {
+    for (int x = (int)x_min; x < x_max; x++) {
+        for (int y = (int)y_min; y < y_max; y++) {
+
             int idx = get_index(x, y);
+
             Eigen::Vector2i pos;
             pos << x, y;
+
             bool inside = insideTriangle(x, y, t.v);
             if (inside) {
                 auto[alpha, beta, gamma] = computeBarycentric2D(x, y, t.v);
                 float w_reciprocal = 1.0/(alpha / v[0].w() + beta / v[1].w() + gamma / v[2].w());
                 float z_interpolated = alpha * v[0].z() / v[0].w() + beta * v[1].z() / v[1].w() + gamma * v[2].z() / v[2].w();
                 z_interpolated *= w_reciprocal;
+                
                 if (z_interpolated < depth_buf[idx]) {
                     depth_buf[idx] = z_interpolated;
                     
@@ -319,6 +327,7 @@ void rst::rasterizer::rasterize_triangle(const Triangle& t, const std::array<Eig
     }
  
 }
+
 
 void rst::rasterizer::set_model(const Eigen::Matrix4f& m)
 {
