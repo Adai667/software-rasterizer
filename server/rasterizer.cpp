@@ -299,7 +299,10 @@ void rst::rasterizer::rasterize_triangle(const Triangle& t, const std::array<Eig
             Eigen::Vector2i pos;
             pos << x, y;
 
-            bool inside = insideTriangle(x, y, t.v);
+            float center_x = (float) x + 0.5;
+            float center_y = (float) y + 0.5;
+
+            bool inside = insideTriangle((int)center_x, (int)center_y, t.v);
             if (inside) {
                 auto[alpha, beta, gamma] = computeBarycentric2D(x, y, t.v);
                 float w_reciprocal = 1.0/(alpha / v[0].w() + beta / v[1].w() + gamma / v[2].w());
