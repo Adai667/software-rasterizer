@@ -21,7 +21,7 @@ const App = () => {
     document.querySelector('.slider').style.background = `linear-gradient(to right, white, white ${value}%, aquamarine` 
     
     try {
-      const response = await fetch(`http://localhost:8080/image/`+ currentObject + '/' + value);
+      const response = await fetch(`http://ec2-18-188-151-62.us-east-2.compute.amazonaws.com:8080/image/`+ currentObject + '/' + value);
       
       const blob = await response.blob();
 
